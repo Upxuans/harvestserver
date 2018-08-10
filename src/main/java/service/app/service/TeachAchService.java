@@ -22,23 +22,14 @@ public class TeachAchService {
 	 
 	 @Autowired
 	 private LogRepository logRepository;
-	 
+	 //根据教师成果查找
 	 public List<TeachAchInfo> getTeachAchInfo(Integer tachteach) {
 		 List<TeachAchInfo> teachAchInfos = teachAchRepository.findByTachteach(tachteach);
 		 return teachAchInfos;
 	 }
-	 
+	 //显示manage表
 	 public List<Object> getmanager() {
-		 
 		return logRepository.selectAllTagView();
 	}
-	 
-//	 public List<PaperInfo> getPaperInfo(Integer teachachieveteach){
-//		 
-//		 List<TeachAchInfo> teachAchInfos = getTeachAchInfo(teachachieveteach);
-//		 
-//		 List<PaperInfo> paperInfos = paperRepository.findAll(teachAchInfos.);
-//		 
-//		 return paperInfos;
-//	 }
+
 }

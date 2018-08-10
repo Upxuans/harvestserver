@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "manager")
+@Entity(name = "manager")//对应数据库中的实体类
 public class ManagerInfo {
 	
 	@Id

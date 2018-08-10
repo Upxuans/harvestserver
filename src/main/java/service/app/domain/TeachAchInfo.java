@@ -9,7 +9,7 @@ import javax.persistence.Id;
 @Entity(name = "tach")
 public class TeachAchInfo {
 
-	@Id
+	@Id //该实体不选ID会有bug，选了还不对。。。
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer tachteach;
 	private Integer tachtype;

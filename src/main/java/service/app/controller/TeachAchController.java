@@ -20,11 +20,9 @@ public class TeachAchController {
 	@Autowired
 	TeachAchService tas;
 	
-	@RequestMapping(value = "/teacher.json")
+	@RequestMapping(value = "/teacher.json")   //仅为测试数据获取
 	@ResponseBody
 	public List<Object> TeachAch(HttpServletResponse response,RequestData data) {
-//		AchResponse tas = new AchResponse();
-//		tas.
 		List<Object> resp = new ArrayList<Object>();
 		resp = tas.getmanager();
 		return resp;

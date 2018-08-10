@@ -25,21 +25,18 @@ public class LogController{
 	@Autowired
 	LogService ls;
 	
-	
 	@RequestMapping("/login.json")
 	@ResponseBody
 	public LogInResponse login(HttpServletResponse response,RequestData data){
+		//所有请求数据封装成为一个类放在tramodel中
 		LogInResponse resp = new LogInResponse();
+		//对response数据分类别封装放在tramodel中
 		ManagerInfo managerInfo = ls.getLogInData(data.getUsername());
 		response.setHeader("Access-Control-Allow-Origin", "*");
-		
 		if(managerInfo==null||
 				!managerInfo.getPassword().equals(data.getPassword())) {
 			resp.setErrCode(ErrCode.LOGIN_ERR_INFO);//用户名或密码错误
-//			resp.setToken();  //搁置起来+
-			
 		}
-			
 		else
 			{
 				resp.setErrCode(ErrCode.LOGIN_OK);//登录成功
@@ -47,4 +44,7 @@ public class LogController{
 			}
 		return resp;
 	}
+
+
+	//登出放在这儿。。
 }

@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import service.app.domain.ManagerInfo;
 
-
+//Jpa方法
 public interface LogRepository extends JpaRepository<ManagerInfo, Integer> {
 
 	public ManagerInfo findByUsername(String username);

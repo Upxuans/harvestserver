@@ -15,6 +15,7 @@ import service.app.tramodel.RequestData;
 @Component
 @Order(value = 1)
 public class LogAspect {
+	//AOP操作，用于登陆验证
 //	private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 //	
 //	@Pointcut("execution(* service.app.controller.*.*(..))")
@@ -22,10 +23,6 @@ public class LogAspect {
 //	
 //	@Before("executionController()")
 //	public void beforeLogging(JoinPoint jp){
-//		String mn = jp.getSignature().getName();
-//		String cn = jp.getSignature().getDeclaringTypeName();
-//		RequestData rd = (RequestData) jp.getArgs()[1];
-//		logger.info(cn +"." +mn+" username["+rd.getManageruser()+"],token["+rd.getType()+"] in controller ");
 //	}
 
 }
