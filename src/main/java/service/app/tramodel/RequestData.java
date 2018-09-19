@@ -9,33 +9,32 @@ package service.app.tramodel;
 
 public class RequestData implements Cloneable{//从前端拿过来的数据容器
 	
-	private Integer id;
+	private int type;
 	private String username;
 	private String password;
-	private String name;
-	public Integer getId() {
-		return id;
+	
+	public int getType() {
+		return type;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setType(int type) {
+		this.type = type;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 //	private String token;     //搁置起来
@@ -46,8 +45,4 @@ public class RequestData implements Cloneable{//从前端拿过来的数据容�
 //	public void setToken(String token) {
 //		this.token = token;
 //	}
-
-	
-	
-	
 }

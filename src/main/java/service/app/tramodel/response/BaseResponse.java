@@ -27,5 +27,4 @@ public class BaseResponse {   //默认传给前端数据的基本容器，后续
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
 }

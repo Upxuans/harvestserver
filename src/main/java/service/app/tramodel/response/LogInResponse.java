@@ -1,16 +1,16 @@
 package service.app.tramodel.response;
 
-import service.app.domain.ManagerInfo;
+import service.app.domain.ManagerModel;
 
 public class LogInResponse extends BaseResponse{ //登陆扩充，加入登陆信息和错误码
 
-	private ManagerInfo managerInfo;
+	private ManagerModel managerInfo;
 	
-	public ManagerInfo getManagerInfo() {
+	
+	public ManagerModel getManagerInfo() {
 		return managerInfo;
 	}
-	public void setManagerInfo(ManagerInfo managerInfo) {
+	public void setManagerInfo(ManagerModel managerInfo) {
 		this.managerInfo = managerInfo;
 	}
-	
 }

@@ -14,25 +14,28 @@ public class TeachAchInfo {
 	private Integer tachteach;
 	private Integer tachtype;
 	private Integer tachach;
+	
 	public Integer getTachteach() {
 		return tachteach;
 	}
+	
 	public void setTachteach(Integer tachteach) {
 		this.tachteach = tachteach;
 	}
+	
 	public Integer getTachtype() {
 		return tachtype;
 	}
+	
 	public void setTachtype(Integer tachtype) {
 		this.tachtype = tachtype;
 	}
+	
 	public Integer getTachach() {
 		return tachach;
 	}
+	
 	public void setTachach(Integer tachach) {
 		this.tachach = tachach;
 	}
-	
-	
-
 }
