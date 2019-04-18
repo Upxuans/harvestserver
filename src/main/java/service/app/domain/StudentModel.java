@@ -12,6 +12,7 @@ public class StudentModel {
 	private Integer id;
 	private String username;
 	private String password;
+	private String imgurl;
 	private String name;
 	private String first;
 	private String second;
@@ -45,6 +46,14 @@ public class StudentModel {
 		this.password = password;
 	}
 	
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+
 	public String getName() {
 		return name;
 	}

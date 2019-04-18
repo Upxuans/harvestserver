@@ -90,4 +90,16 @@ public interface ManageUserDao {
 			@Param(value = "direction") String direction
 	);
 
+	@Update("UPDATE teacher SET rewards=#{rewards}, academicwork=#{academicwork}, introduction=#{introduction} WHERE id=#{userId}")
+	public void generateResumeForTeacherDao(@Param(value = "userId") int userId, @Param(value = "rewards") String rewards, @Param(value = "academicwork") String academicwork, @Param(value = "introduction") String introduction);
+
+	@Select("SELECT * FROM teacher WHERE username=#{username}")
+	public TeacherModel getTeacherMsgDao(@Param(value = "username") String username);
+
+	@Select("SELECT id FROM teacher WHERE username=#{username}")
+	public int getTeacherIdByUsernameDao(@Param(value = "username") String username);
+
+	@Select("SELECT id FROM student WHERE username=#{username}")
+	public int getStudentIdByUsernameDao(@Param(value = "username") String username);
+
 }

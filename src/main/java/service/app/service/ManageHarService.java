@@ -23,8 +23,51 @@ public class ManageHarService {
 	
 	@Autowired
 	HarvestUtil harvestUtil;
+	
+	/*获得所有harvest + harvestCopy*******************************************************************************harvest + harvestCopy*/
+	public List<JpaperModel> getAllJpaperAndCopyService() {
+		List<JpaperModel> jpaperModels = manageHarDao.getAllJpaperDao();
+		jpaperModels.addAll(manageHarDao.getAllJpaperCopyDao());
+		return jpaperModels;
+	}
+	
+	public List<MpaperModel> getAllMpaperAndCopyService() {
+		List<MpaperModel> mpaperModels = manageHarDao.getAllMpaperDao();
+		mpaperModels.addAll(manageHarDao.getAllMpaperCopyDao());
+		return mpaperModels;
+	}
 
-	//获得所有harvest
+	public List<PatentModel> getAllPatentAndCopyService() {
+		List<PatentModel> patentModels = manageHarDao.getAllPatentDao();
+		patentModels.addAll(manageHarDao.getAllPatentCopyDao());
+		return patentModels;
+	}
+
+	public List<ProjectModel> getAllProjectAndCopyService() {
+		List<ProjectModel> projectModels = manageHarDao.getAllProjectDao();
+		projectModels.addAll(manageHarDao.getAllProjectCopyDao());
+		return projectModels;
+	}
+
+	public List<SubjectModel> getAllSubjectAndCopyService() {
+		List<SubjectModel> subjectModels = manageHarDao.getAllSubjectDao();
+		subjectModels.addAll(manageHarDao.getAllSubjectCopyDao());
+		return subjectModels;
+	}
+
+	public List<SoftwareModel> getAllSoftwareAndCopyService() {
+		List<SoftwareModel> softwareModels = manageHarDao.getAllSoftwareDao();
+		softwareModels.addAll(manageHarDao.getAllSoftwareCopyDao());
+		return softwareModels;
+	}
+
+	public List<AffairsModel> getAllAffairsAndCopyService() {
+		List<AffairsModel> affairsModels = manageHarDao.getAllAffairsDao();
+		affairsModels.addAll(manageHarDao.getAllAffairsCopyDao());
+		return affairsModels;
+	}
+
+	/*获得所有harvest**********************************************************************************************************harvest*/
 	public List<JpaperModel> getAllJpaperService() {
 		List<JpaperModel> jpaperModels = manageHarDao.getAllJpaperDao();
 		return jpaperModels;
@@ -60,7 +103,7 @@ public class ManageHarService {
 		return affairsModels;
 	}
 
-	//获得所有harvestCopy
+	/*获得所有harvestCopy***************************************************************************************************harvestCopy*/
 	public List<JpaperModel> getAllJpaperCopyService() {
 		List<JpaperModel> jpaperModels = manageHarDao.getAllJpaperCopyDao();
 		return jpaperModels;
@@ -146,4 +189,5 @@ public class ManageHarService {
 		}
 		return flag;
 	}
+
 }

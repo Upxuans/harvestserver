@@ -76,10 +76,11 @@ public class AuditService {
 			if(jModel.getReview() != null) source = 1;//是jpaper_copy表中的harType和harId
 			jModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			jModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(jModel.getSubmitId() != null)
+			if(jModel.getSubmitId() != null) {
+				jModel.setReviseStatus(harvestUtil.getReviseStatus(jModel.getReview()));
 				jModel.setSubmitName(harvestUtil.getHarSubmitName(jModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(jModel.getReviseId() != null) 
 				jModel.setReviseName(harvestUtil.getHarReviseName(jModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> models = harvestUtil.getAuthorsList(harType, jModel.getJpaperId(), source);
 				jModel.setAuthorsList(models);
@@ -97,10 +98,11 @@ public class AuditService {
 			if(mModel.getReview() != null) source = 1;
 			mModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			mModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(mModel.getSubmitId() != null)
+			if(mModel.getSubmitId() != null) {
+				mModel.setReviseStatus(harvestUtil.getReviseStatus(mModel.getReview()));
 				mModel.setSubmitName(harvestUtil.getHarSubmitName(mModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(mModel.getReviseId() != null)
 				mModel.setReviseName(harvestUtil.getHarReviseName(mModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> models = harvestUtil.getAuthorsList(harType, mModel.getMpaperId(), source);
 				mModel.setAuthorsList(models);;
@@ -118,10 +120,11 @@ public class AuditService {
 			if(pModel.getReview() != null) source = 1;
 			pModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			pModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(pModel.getSubmitId() != null)
+			if(pModel.getSubmitId() != null) {
+				pModel.setReviseStatus(harvestUtil.getReviseStatus(pModel.getReview()));
 				pModel.setSubmitName(harvestUtil.getHarSubmitName(pModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(pModel.getReviseId() != null)
 				pModel.setReviseName(harvestUtil.getHarReviseName(pModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> pmodels = harvestUtil.getAuthorsList(harType, pModel.getPatentId(), source);
 				pModel.setAuthorsList(pmodels);;
@@ -139,10 +142,11 @@ public class AuditService {
 			if(pModel.getReview() != null) source = 1;
 			pModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			pModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(pModel.getSubmitId() != null)
+			if(pModel.getSubmitId() != null) {
+				pModel.setReviseStatus(harvestUtil.getReviseStatus(pModel.getReview()));
 				pModel.setSubmitName(harvestUtil.getHarSubmitName(pModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(pModel.getReviseId() != null)
 				pModel.setReviseName(harvestUtil.getHarReviseName(pModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> pmodels = harvestUtil.getAuthorsList(harType, pModel.getProjectId(), source);
 				pModel.setAuthorsList(pmodels);;
@@ -160,10 +164,11 @@ public class AuditService {
 			if(sModel.getReview() != null) source = 1;
 			sModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			sModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(sModel.getSubmitId() != null)
+			if(sModel.getSubmitId() != null) {
+				sModel.setReviseStatus(harvestUtil.getReviseStatus(sModel.getReview()));
 				sModel.setSubmitName(harvestUtil.getHarSubmitName(sModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(sModel.getReviseId() != null)
 				sModel.setReviseName(harvestUtil.getHarReviseName(sModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> smodels = harvestUtil.getAuthorsList(harType, sModel.getSubjectId(), source);
 				sModel.setAuthorsList(smodels);;
@@ -181,10 +186,11 @@ public class AuditService {
 			if(sModel.getReview() != null) source = 1;
 			sModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			sModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(sModel.getSubmitId() != null)
+			if(sModel.getSubmitId() != null) {
+				sModel.setReviseStatus(harvestUtil.getReviseStatus(sModel.getReview()));
 				sModel.setSubmitName(harvestUtil.getHarSubmitName(sModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(sModel.getReviseId() != null)
 				sModel.setReviseName(harvestUtil.getHarReviseName(sModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> smodels = harvestUtil.getAuthorsList(harType, sModel.getSoftwareId(), source);
 				sModel.setAuthorsList(smodels);;
@@ -202,10 +208,11 @@ public class AuditService {
 			if(aModel.getReview() != null) source = 1;
 			aModel.setFirstAuthor(harvestUtil.getHarFirstAuthor(harType, harId, source));
 			aModel.setBelong(harvestUtil.getHarBelong(harType, harId, source));
-			if(aModel.getSubmitId() != null)
+			if(aModel.getSubmitId() != null) {
+				aModel.setReviseStatus(harvestUtil.getReviseStatus(aModel.getReview()));
 				aModel.setSubmitName(harvestUtil.getHarSubmitName(aModel.getSubmitId()));//教师的时候需要提交者姓名
-			if(aModel.getReviseId() != null)
 				aModel.setReviseName(harvestUtil.getHarReviseName(aModel.getReviseId()));
+			}
 			if(gal) {//需要获得AuthorsList
 				List<AuthorsModel> amodels = harvestUtil.getAuthorsList(harType, aModel.getAffairsId(), source);
 				aModel.setAuthorsList(amodels);;

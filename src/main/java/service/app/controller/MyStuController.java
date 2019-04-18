@@ -38,6 +38,7 @@ public class MyStuController {
 			MyStudentResponse myStudentData = new MyStudentResponse();
 			myStudentData.setStuId(model.get(i).getId());
 			myStudentData.setStuName(model.get(i).getName());
+			myStudentData.setUsername(model.get(i).getUsername());
 			myStudentData.setJpaperNum(myStuService.getHarNumService(model.get(i).getId(), 1));
 			myStudentData.setMpaperNum(myStuService.getHarNumService(model.get(i).getId(), 2));
 			myStudentData.setPatentNum(myStuService.getHarNumService(model.get(i).getId(), 3));

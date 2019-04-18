@@ -7,6 +7,7 @@ public class MyStudentResponse {
 
 	protected int stuId;
 	protected String stuName;
+	protected String username;
 	protected int jpaperNum;
 	protected int mpaperNum;
 	protected int patentNum;
@@ -29,6 +30,14 @@ public class MyStudentResponse {
 	
 	public void setStuName(String stuName) {
 		this.stuName = stuName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getJpaperNum() {

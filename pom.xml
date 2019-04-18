@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>app</groupId>
+	<groupId>Upxuan</groupId>
 	<artifactId>Harvest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>Achievement</name>
+	<name>harvestserver</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.4.RELEASE</version>
+		<version>2.1.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -25,6 +25,17 @@
 	</properties>
 
 	<dependencies>
+<!-- 		<dependency>
+	        <groupId>com.h2database</groupId> 
+	        <artifactId>h2</artifactId>
+	        <scope>runtime</scope> 
+		</dependency> -->
+		<dependency>    
+		    <groupId>net.sf.json-lib</groupId>    
+		    <artifactId>json-lib</artifactId>    
+		    <version>2.4</version>    
+		    <classifier>jdk15</classifier>    
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -39,22 +50,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+<!-- 		<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+        </dependency> -->
         <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <dependency>
+<!--         <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
-		    </dependency>
-        <dependency>
+		    </dependency> -->
+<!--         <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-entitymanager</artifactId>
-	    </dependency>
+	    </dependency> -->
 	    <dependency>
 		    <groupId>org.mybatis.spring.boot</groupId>
 		    <artifactId>mybatis-spring-boot-starter</artifactId>

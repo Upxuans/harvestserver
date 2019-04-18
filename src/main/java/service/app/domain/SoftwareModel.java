@@ -6,6 +6,7 @@ public class SoftwareModel extends CopyModel {
 	private String softwareName;
 	private String softwareNum;
 	private String softwareAcquireType;
+	private String softwareDate;
 	private String softwareAuthors = "";
 	
 	public Integer getSoftwareId() {
@@ -46,5 +47,13 @@ public class SoftwareModel extends CopyModel {
 
 	public void setSoftwareAuthors(String softwareAuthors) {
 		this.softwareAuthors = softwareAuthors;
+	}
+
+	public String getSoftwareDate() {
+		return softwareDate;
+	}
+
+	public void setSoftwareDate(String softwareDate) {
+		this.softwareDate = softwareDate;
 	}
 }

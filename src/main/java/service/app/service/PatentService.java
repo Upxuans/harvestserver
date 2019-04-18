@@ -85,7 +85,7 @@ public class PatentService {
 	public Boolean updatePatentService(PatentModel data, int harId, int source) {
 		
 		Boolean flag = true;
-		int d1 = 0, d2 = 0, id = 0;
+		int d1 = 0, d2 = 0;
 		
 		if(data.getPatentType().equals("发明专利"))
 			d1 = 1;

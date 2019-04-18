@@ -7,7 +7,7 @@
  */
 package service.app.tramodel;
 
-public class LogRequest implements Cloneable{//从前端拿过来的数据容器
+public class LogRequest extends BaseRequest implements Cloneable{//从前端拿过来的数据容器
 	
 	private String username;
 	private String password;

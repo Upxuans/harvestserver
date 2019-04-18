@@ -16,25 +16,24 @@ public class ReviseInfoService {
 	@Autowired
 	ReviseInfoDao reviseInfoDao;
 	
-	public boolean updateInfoInTeacherService(int userId, String link, String tel, String email, String direction) {
-		
-		Boolean flag = true;
-		try {
-			reviseInfoDao.updateInfoInTeacherDao(userId, link, tel, email, direction);
-		} catch (Exception e) {
-			flag = false;
-		}
-		return flag;
+	public void updateInfoInTeacherOneService(int userId, String link, String tel, String email, String direction) {
+		reviseInfoDao.updateInfoInTeacherOneDao(userId, link, tel, email, direction);
+		return ;
+	}
+	
+	public void updateInfoInStudentOneService(int userId, String tel, String email, String direction) {
+		reviseInfoDao.updateInfoInStudentOneDao(userId, tel, email, direction);
+		return ;
+	}
+	
+	public void updateInfoInTeacherTwoService(int userId, String imgUrl, String link, String tel, String email, String direction) {
+		reviseInfoDao.updateInfoInTeacherTwoDao(userId, imgUrl, link, tel, email, direction);
+		return ;
 	}
 
-	public boolean updateInfoInStudentService(int userId, String tel, String email, String direction) {
-		Boolean flag = true;
-		try {
-			reviseInfoDao.updateInfoInStudentDao(userId, tel, email, direction);
-		} catch (Exception e) {
-			flag = false;
-		}
-		return flag;
+	public void updateInfoInStudentTwoService(int userId, String imgUrl, String tel, String email, String direction) {
+		reviseInfoDao.updateInfoInStudentTwoDao(userId, imgUrl, tel, email, direction);
+		return ;
 	}
 	
 	public String findPwdByIdService(int userType, int userId) {
@@ -65,5 +64,13 @@ public class ReviseInfoService {
 		return flag;
 	}
 
-	
+	public String getImgUrlService(int userType, int userId) {
+		String imgurl = "";
+		if(userType == 1) {
+			imgurl = reviseInfoDao.getTeacherImgUrlDao(userId);
+		}else if(userType == 2) {
+			imgurl = reviseInfoDao.getStudentImgUrlDao(userId);
+		}
+		return imgurl;
+	}
 }

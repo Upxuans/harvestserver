@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import service.app.domain.StudentModel;
-import service.app.domain.TeacherModel;
 import service.app.service.ManageUserService;
 import service.app.tramodel.BaseRequest;
 import service.app.tramodel.ManageUserRequest;
@@ -39,7 +37,7 @@ public class ManageUserConroller {
 		try {
 			resp.setTeacherModels(manageUserService.getTeacherService());
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			flag = false;
 		}
 		

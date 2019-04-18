@@ -2,11 +2,20 @@ package service.app.domain;
 
 public class BaseModel {
 	
+	private String reviseStatus;
 	private String firstAuthor;
 	private String belong;
 	private String submitName;
 	private String reviseName;
 	
+	public String getReviseStatus() {
+		return reviseStatus;
+	}
+
+	public void setReviseStatus(String reviseStatus) {
+		this.reviseStatus = reviseStatus;
+	}
+
 	public String getSubmitName() {
 		return submitName;
 	}

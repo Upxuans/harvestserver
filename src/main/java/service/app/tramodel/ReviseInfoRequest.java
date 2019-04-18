@@ -7,6 +7,8 @@ package service.app.tramodel;
 
 public class ReviseInfoRequest extends BaseRequest implements Cloneable{
 
+	protected String imageUrl;
+	protected String fileName;
 	protected String link;
 	protected String tel;
 	protected String email;
@@ -14,6 +16,22 @@ public class ReviseInfoRequest extends BaseRequest implements Cloneable{
 	protected String pass;
 	protected String checkPass;
 	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getLink() {
 		return link;
 	}

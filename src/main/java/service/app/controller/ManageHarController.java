@@ -5,8 +5,6 @@
  */
 package service.app.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import service.app.domain.JpaperModel;
 import service.app.service.AuditService;
 import service.app.service.ManageHarService;
 import service.app.tramodel.BaseListRequest;
@@ -71,8 +68,7 @@ public class ManageHarController {
 		boolean gal = true;
 		
 		try {
-			List<JpaperModel> jpaperModel = harvestUtil.setJpaperDataAuthors(manageHarService.getAllJpaperCopyService());
-			resp.setJpaperModels(auditService.arrangeJpaperService(gal, jpaperModel));
+			resp.setJpaperModels(auditService.arrangeJpaperService(gal, harvestUtil.setJpaperDataAuthors(manageHarService.getAllJpaperCopyService())));
 			resp.setMpaperModels(auditService.arrangeMpaperService(gal, harvestUtil.setMpaperDataAuthors(manageHarService.getAllMpaperCopyService())));
 			resp.setPatentModels(auditService.arrangePatentService(gal, harvestUtil.setPatentDataAuthors(manageHarService.getAllPatentCopyService())));
 			resp.setProjectModels(auditService.arrangeProjectService(gal, harvestUtil.setProjectDataAuthors(manageHarService.getAllProjectCopyService())));

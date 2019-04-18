@@ -125,4 +125,30 @@ public class ManageUserService {
 		Integer id = manageUserDao.getStudentUsernameDao(username);
 		return id;
 	}
+
+	public boolean generateResumeForTeacherService(int userId, TeacherModel teacherModel) {
+		boolean flag = true;
+		try {
+			manageUserDao.generateResumeForTeacherDao(userId, teacherModel.getRewards(), teacherModel.getAcademicwork(), teacherModel.getIntroduction());
+		} catch (Exception e) {
+//			System.out.println(e);
+			flag = false;
+		}
+		return flag;
+	}
+
+	public TeacherModel getTeacherMsgService(String username) {
+		TeacherModel model = manageUserDao.getTeacherMsgDao(username);
+		return model;
+	}
+
+	public int getTeacherIdByUsernameService(String username) {
+		int id = manageUserDao.getTeacherIdByUsernameDao(username);
+		return id;
+	}
+
+	public int getStudentIdByUsernameService(String username) {
+		int id = manageUserDao.getStudentIdByUsernameDao(username);
+		return id;
+	}
 }

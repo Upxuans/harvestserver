@@ -36,7 +36,7 @@ public interface JpaperDao {
 	public List<JpaperModel> getJpaperDataFromStudentDao(@Param(value = "userId") int userId, @Param(value = "load") int load);
 	
 	@Select("SELECT * FROM jpaper_copy AS t1 WHERE t1.review=3 AND t1.jpaper_id IN"
-			+ "(SELECT t2.sach_harId FROM sach AS t2 WHERE t2.sach_userId=#{userId} AND t2.sach_harType=1 AND t2.sach_load=#{load} AND t2.sach_source=1)")
+			+ "(SELECT t2.sach_harId FROM sach AS t2 WHERE t2.sach_userId=#{userId} AND t2.sach_load=#{load} AND t2.sach_harType=1 AND t2.sach_source=1)")
 	public List<JpaperModel> getJpaperCopyFromStudentDao(@Param(value = "userId") int userId, @Param(value = "load") int load);
 	
 	//在jpaper表中手动插入记录，返回jpaperId

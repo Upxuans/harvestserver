@@ -72,7 +72,7 @@ public class SubjectService {
 	public Boolean updateSubjectService(SubjectModel data, int harId, int source) {
 
 		Boolean flag = true;
-		int d = 0, id = 0;
+		int d = 0;
 		if(data.getSubjectStatus().equals("已出版")) 
 			d = 1;
 		else if(data.getSubjectStatus().equals("待出版")) 

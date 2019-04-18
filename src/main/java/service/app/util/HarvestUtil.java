@@ -25,6 +25,39 @@ public class HarvestUtil {
 	
 	@Autowired
 	HarvestService harvests;
+	 
+//	private static String judgeType(int k) {
+//		String type = null;
+//		
+//		if(k == 1) {
+//			type = "期刊论文";
+//		}else if(k == 2) {
+//			type = "会议论文";
+//		}else if(k == 3) {
+//			type = "专利";
+//		}else if(k == 4) {
+//			type = "项目";
+//		}else if(k == 5) {
+//			type = "学术专著";
+//		}else if(k == 6) {
+//			type = "软件著作权";
+//		}else if(k == 7) {
+//			type = "公共事务";
+//		}
+//		return type;
+//	}
+	
+	//文章的审核状态
+	public String getReviseStatus(int revise) {
+		String reviseStatus = "";
+		if(revise == 1) 
+			reviseStatus = "审核中";
+		else if(revise == 2) 
+			reviseStatus = "审核失败";
+		else if(revise == 3) 
+			reviseStatus = "审核通过";
+		return reviseStatus;
+	}
 	
 	//找到一篇文章的第一作者
 	public String getHarFirstAuthor(int harType, int harId, int source) {
@@ -48,7 +81,13 @@ public class HarvestUtil {
 	
 	//找到一篇文章的审核者(教师)
 	public String getHarReviseName(Integer id) {
-		String name = harvests.getHarReviseNameService(id);
+		String name = "";
+		if(id != null) {
+			name = harvests.getHarReviseNameService(id);
+			if(id == -2) {
+				name = "Admin";
+			}
+		}
 		return name;
 	}
 	
@@ -101,13 +140,20 @@ public class HarvestUtil {
 			jModel.setJpaperAuthors(authors);//创建作者
 			
 			String status = jModel.getJpaperStatus();
-//			System.out.println(status);
 			if(status.equals("1")) 
 				jModel.setJpaperStatus("已发表");
 			else if(status.equals("2")) 
 				jModel.setJpaperStatus("已接收");
 			else 
 				jModel.setJpaperStatus("");
+			
+			String jpaperType = jModel.getJpaperType1();
+            if(!jModel.getJpaperType2().equals(""))
+            	jpaperType += '>' + jModel.getJpaperType2();
+            if(!jModel.getJpaperType3().equals(""))
+            	jpaperType += '>' + jModel.getJpaperType3();
+            jModel.setJpaperType(jpaperType);
+            
 //			System.out.println(data.get(i).getJpaperStatus());
 		}
 		return data;
@@ -120,6 +166,14 @@ public class HarvestUtil {
 			if(mModel.getReview() != null) source = 1;
 			String authors = getAuthorsName(2, mModel.getMpaperId(), source);
 			mModel.setMpaperAuthors(authors);//创建作者
+			
+			String jpaperType = mModel.getMpaperType1();
+            if(!mModel.getMpaperType2().equals(""))
+            	jpaperType += '>' + mModel.getMpaperType2();
+            if(!mModel.getMpaperType3().equals(""))
+            	jpaperType += '>' + mModel.getMpaperType3();
+//            System.out.println("jpaperType:" + jpaperType);
+            mModel.setMpaperType(jpaperType);
 		}
 		return data;
 	}

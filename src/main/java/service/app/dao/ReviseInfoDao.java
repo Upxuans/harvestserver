@@ -12,17 +12,27 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface ReviseInfoDao {
-
+	
 	@Update("UPDATE teacher AS t "
 			+ "SET t.link=#{link}, t.tel=#{tel}, t.email=#{email}, t.direction=#{direction} "
 			+ "WHERE t.id=#{userId}")
-	public void updateInfoInTeacherDao(@Param(value = "userId") int userId, @Param(value = "link") String link, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
+	public void updateInfoInTeacherOneDao(@Param(value = "userId") int userId, @Param(value = "link") String link, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
 
 	@Update("UPDATE student AS s "
 			+ "SET s.tel=#{tel}, s.email=#{email}, s.direction=#{direction} "
 			+ "WHERE s.id=#{userId}")
-	public void updateInfoInStudentDao(@Param(value = "userId") int userId, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
+	public void updateInfoInStudentOneDao(@Param(value = "userId") int userId, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
+	
 
+	@Update("UPDATE teacher AS t "
+			+ "SET t.imgurl=#{imgUrl}, t.link=#{link}, t.tel=#{tel}, t.email=#{email}, t.direction=#{direction} "
+			+ "WHERE t.id=#{userId}")
+	public void updateInfoInTeacherTwoDao(@Param(value = "userId") int userId, @Param(value = "imgUrl") String imgUrl, @Param(value = "link") String link, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
+
+	@Update("UPDATE student AS s "
+			+ "SET s.imgurl=#{imgUrl}, s.tel=#{tel}, s.email=#{email}, s.direction=#{direction} "
+			+ "WHERE s.id=#{userId}")
+	public void updateInfoInStudentTwoDao(@Param(value = "userId") int userId, @Param(value = "imgUrl") String imgUrl, @Param(value = "tel") String tel, @Param(value = "email") String email, @Param(value = "direction") String direction);
 	
 	@Select("SELECT m.password FROM manager AS m WHERE m.id=#{userId}")
 	public String findManagerPwdByIdDao(@Param(value = "userId") int userId);
@@ -43,9 +53,10 @@ public interface ReviseInfoDao {
 	@Update("UPDATE student AS s SET s.password=#{checkPass} WHERE s.id=#{userId}")
 	public void updatePwdInStudentDao(@Param(value = "userId") int userId, @Param(value = "checkPass") String checkPass);
 
-	
+	@Select("SELECT imgurl FROM teacher WHERE id=#{id}")
+	public String getTeacherImgUrlDao(@Param(value = "id") int id);
 
-
-	
+	@Select("SELECT imgurl FROM student WHERE id=#{id}")
+	public String getStudentImgUrlDao(@Param(value = "id") int id);
 
 }

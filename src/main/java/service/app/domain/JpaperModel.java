@@ -3,6 +3,7 @@ package service.app.domain;
 public class JpaperModel extends CopyModel {
 	
 	private Integer jpaperId;
+	private String jpaperType;
 	private String jpaperType1;
 	private String jpaperType2;
 	private String jpaperType3;
@@ -23,6 +24,14 @@ public class JpaperModel extends CopyModel {
 	
 	public void setJpaperId(Integer jpaperId) {
 		this.jpaperId = jpaperId;
+	}
+
+	public String getJpaperType() {
+		return jpaperType;
+	}
+
+	public void setJpaperType(String jpaperType) {
+		this.jpaperType = jpaperType;
 	}
 
 	public String getJpaperType1() {

@@ -12,6 +12,7 @@ public class TeacherModel {
 	private Integer id;
 	private String username;
 	private String password;
+	private String imgurl;
 	private String name;
 	private String title;
 	private String tel;
@@ -19,6 +20,9 @@ public class TeacherModel {
 	private String direction;
 	private String link;
 	private String team;
+	private String rewards;
+	private String academicwork;
+	private String introduction;
 	
 	public Integer getId() {
 		return id;
@@ -44,6 +48,14 @@ public class TeacherModel {
 		this.password = password;
 	}
 	
+	public String getImgurl() {
+		return imgurl;
+	}
+
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -98,5 +110,29 @@ public class TeacherModel {
 
 	public void setTeam(String team) {
 		this.team = team;
+	}
+
+	public String getRewards() {
+		return rewards;
+	}
+
+	public void setRewards(String rewards) {
+		this.rewards = rewards;
+	}
+
+	public String getAcademicwork() {
+		return academicwork;
+	}
+
+	public void setAcademicwork(String academicwork) {
+		this.academicwork = academicwork;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
 }

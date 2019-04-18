@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import service.app.domain.AuthorsModel;
 import service.app.domain.OthersModel;
 import service.app.domain.SachModel;
 import service.app.domain.TachModel;
