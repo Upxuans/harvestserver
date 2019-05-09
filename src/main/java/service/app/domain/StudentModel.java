@@ -21,31 +21,36 @@ public class StudentModel {
 	private String direction;
 	private String degree;
 	private String team;
-
+	private String workDescribe;
+	private Boolean works;
+	private Boolean devices;
+	private String deviceDescribe;
+	private Boolean keyss;
+	
+	public Integer getId() {
+		return id;
+	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getId() {
-		return id;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getImgurl() {
 		return imgurl;
 	}
@@ -57,47 +62,47 @@ public class StudentModel {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getFirst() {
 		return first;
 	}
-	
+
 	public void setFirst(String first) {
 		this.first = first;
 	}
-	
+
 	public String getSecond() {
 		return second;
 	}
-	
+
 	public void setSecond(String second) {
 		this.second = second;
 	}
-	
+
 	public String getTel() {
 		return tel;
 	}
-	
+
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getDirection() {
 		return direction;
 	}
-	
+
 	public void setDirection(String direction) {
 		this.direction = direction;
 	}
@@ -116,5 +121,45 @@ public class StudentModel {
 
 	public void setTeam(String team) {
 		this.team = team;
+	}
+
+	public String getWorkDescribe() {
+		return workDescribe;
+	}
+
+	public void setWorkDescribe(String workDescribe) {
+		this.workDescribe = workDescribe;
+	}
+
+	public Boolean getWorks() {
+		return works;
+	}
+
+	public void setWorks(Boolean works) {
+		this.works = works;
+	}
+
+	public Boolean getDevices() {
+		return devices;
+	}
+
+	public void setDevices(Boolean devices) {
+		this.devices = devices;
+	}
+
+	public String getDeviceDescribe() {
+		return deviceDescribe;
+	}
+
+	public void setDeviceDescribe(String deviceDescribe) {
+		this.deviceDescribe = deviceDescribe;
+	}
+
+	public Boolean getKeyss() {
+		return keyss;
+	}
+
+	public void setKeyss(Boolean keyss) {
+		this.keyss = keyss;
 	}
 }

@@ -87,7 +87,7 @@ public class OutPutResumeController {
 				resp.setSubjectModels(auditService.arrangeSubjectService(gal, harvestUtil.setSubjectDataAuthors(manageHarService.getAllSubjectAndCopyService())));
 				resp.setSoftwareModels(auditService.arrangeSoftwareService(gal, harvestUtil.setSoftwareDataAuthors(manageHarService.getAllSoftwareAndCopyService())));
 				resp.setAffairsModels(auditService.arrangeAffairsService(gal, harvestUtil.setAffairsDataAuthors(manageHarService.getAllAffairsAndCopyService())));
-			}else if(data.getUserType() == 1) {
+			}else if(data.getUserType() == 1 || username.length() == 5) {
 				id = manageUserService.getTeacherIdByUsernameService(username);
 				resp.setJpaperModels(auditService.arrangeJpaperService(gal, harvestUtil.setJpaperDataAuthors(jpaperService.getJpaperDataFromTeacherService(id, load))));
 				resp.setMpaperModels(auditService.arrangeMpaperService(gal, harvestUtil.setMpaperDataAuthors(mpaperService.getMpaperDataFromTeacherService(id, load))));

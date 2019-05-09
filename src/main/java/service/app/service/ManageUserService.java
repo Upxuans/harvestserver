@@ -8,6 +8,7 @@ package service.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import service.app.dao.HandleHarDao;
@@ -18,6 +19,9 @@ import service.app.util.HarvestUtil;
 
 @Service
 public class ManageUserService {
+	
+	@Value("${default.password}")
+	private String defaultPassword;
 	
 	@Autowired
 	ManageUserDao manageUserDao;
@@ -77,7 +81,7 @@ public class ManageUserService {
 		int flag = 0;
 		try {
 			if(handleType == 0) {
-				String password = "123";//设置初始密码为123
+				String password = defaultPassword;//设置初始密码为
 				manageUserDao.addTeacherDao(data.getUsername(), password, data.getName(), data.getTitle(), data.getTeam(), data.getTel(), data.getEmail(), data.getDirection(), data.getLink());
 			}else {
 				manageUserDao.updateTeacherDao(data.getId(), data.getName(), data.getTitle(), data.getTeam(), data.getTel(), data.getEmail(), data.getDirection(), data.getLink());
@@ -102,8 +106,8 @@ public class ManageUserService {
 				}else secondId = -1;
 				if(flag==0) {
 					if(handleType == 0) {
-						data.setPassword("123");
-						manageUserDao.addStudentDao(data.getUsername(), data.getPassword(), data.getName(), Integer.valueOf(data.getDegree()), data.getTeam(), firstId, secondId, data.getTel(), data.getEmail(), data.getDirection());
+						data.setPassword(defaultPassword);//默认密码
+						manageUserDao.addStudentDao(data.getUsername(), data.getPassword(), data.getName(), Integer.valueOf(data.getDegree()), data.getTeam(), firstId, secondId, data.getTel(), data.getEmail(), data.getDirection(), true, true, true);
 					}else {
 						manageUserDao.updateStudentDao(data.getId(), data.getName(), Integer.valueOf(data.getDegree()), data.getTeam(), firstId, secondId, data.getTel(), data.getEmail(), data.getDirection());
 					}

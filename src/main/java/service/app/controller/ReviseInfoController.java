@@ -38,7 +38,7 @@ public class ReviseInfoController {
 		boolean flag = true;
 		
 //		String path = "E:/Codes/vue/harvestweb/static/images/avatar/";
-		String path = "/download/";
+		String path = "/var/www/html/lab/download/sculpture";
 		String imageUrl = data.getImageUrl();
 		String imagePrefix = "";
 		String image = "";

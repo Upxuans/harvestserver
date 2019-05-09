@@ -22,4 +22,6 @@ public class ErrCode {
 	public final static int SETTING_REG_USER_ERR = 22;//用户名重复
 	public final static int SETTING_NONE_USER_ERR = 24;//用户名不存在
 	public final static int SETTING_PASS_ERR = 23;//原密码错误
+	public final static int SETTING_FILE_REPEAT_ERR = 25;//文件重复
+	public final static int SETTING_FILE_UPLOAD_ERR = 26;//文件上传失败
 }

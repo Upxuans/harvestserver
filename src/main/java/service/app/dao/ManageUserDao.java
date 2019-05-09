@@ -45,7 +45,7 @@ public interface ManageUserDao {
 		@Param(value = "link") String link
 	);
 
-	@Insert("INSERT INTO student (username, password, name, degree, team, first, second, tel, email, direction) VALUE (#{username}, #{password}, #{name}, #{degree}, #{team}, #{first}, #{second}, #{tel}, #{email}, #{direction})")
+	@Insert("INSERT INTO student (username, password, name, degree, team, first, second, tel, email, direction, devices, keyss, works) VALUE (#{username}, #{password}, #{name}, #{degree}, #{team}, #{first}, #{second}, #{tel}, #{email}, #{direction}, #{devices}, #{keyss}, #{works})")
 	public void addStudentDao(
 			@Param(value = "username") String username, 
 			@Param(value = "password") String password, 
@@ -56,7 +56,10 @@ public interface ManageUserDao {
 			@Param(value = "second") int second, 
 			@Param(value = "tel") String tel, 
 			@Param(value = "email") String email, 
-			@Param(value = "direction") String direction
+			@Param(value = "direction") String direction,
+			@Param(value = "devices") Boolean devicess, 
+			@Param(value = "keyss") Boolean keyss, 
+			@Param(value = "works") Boolean works
 	);
 	
 	@Select("SELECT id FROM teacher WHERE username=#{username}")
