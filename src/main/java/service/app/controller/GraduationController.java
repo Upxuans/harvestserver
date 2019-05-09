@@ -6,10 +6,14 @@
 package service.app.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +24,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -187,26 +192,37 @@ public class GraduationController {
      */
     @RequestMapping("/downloadFile")
     public ResponseEntity<byte[]> downloadFileController(@RequestBody GraduationMsgRequest data) throws IOException {
-    	System.out.println(data.toString());
+//    	System.out.println(data.toString());
 //    	File file = new File("/var/www/html/lab/download/suffer" + File.separator + data.getFilename());// 你放的文件路径 
-    	File file = new File("F:" + File.separator + data.getFilename());// 你放的文件路径 
+//    	File file = new File("F:" + File.separator + data.getFilename());// 你放的文件路径 
     	
+    	String sufferpath = "/var/www/html/lab/download/suffer";
+    	FtpFileUtil.downloadFile(data.getUsername(), data.getFilename(), sufferpath);
+    	
+    	String tmpPathStr = sufferpath + File.separator + data.getFilename();
+    	InputStream inputStream = Files.newInputStream(Paths.get(tmpPathStr), StandardOpenOption.READ);
+
     	//从ftp中获得的文件流写到file文件中去
-    	InputStream inputStream = FtpFileUtil.getFtpFile(data.getUsername(), data.getFilename());
-    	OutputStream outputStream = new FileOutputStream(file);
-    	byte[] arr = new byte[1000]; //该数组用来存入从输入文件中读取到的数据
-    	int len; //变量len用来存储每次读取数据后的返回值
-    	while( ( len=inputStream.read(arr) ) != -1 ) {
-    		outputStream.write(arr, 0, len);
-    	}//while循环：每次从输入文件读取数据后，都写入到输出文件中
-    	inputStream.close();
-    	outputStream.close();
+//    	InputStream inputStream = FtpFileUtil.getFtpFile(data.getUsername(), data.getFilename());
+    	
+//    	InputStream inputStream = new FileInputStream(new File("F:" + File.separator + "zhangjilin.jpg"));
+    	
+//    	OutputStream outputStream = new FileOutputStream(file);
+//    	byte[] arr = new byte[1000]; //该数组用来存入从输入文件中读取到的数据
+//    	int len; //变量len用来存储每次读取数据后的返回值
+//    	while( ( len=inputStream.read(arr) ) != -1 ) {
+//    		outputStream.write(arr, 0, len);
+//    	}//while循环：每次从输入文件读取数据后，都写入到输出文件中
+//    	inputStream.close();
+//    	outputStream.close();
 		
+    	byte[] res = StreamUtils.copyToByteArray(inputStream);
+    	
     	HttpHeaders headers = new HttpHeaders();// 设置一个head
     	String downloadFielName = new String(data.getFilename().getBytes("UTF-8"),"iso-8859-1");
-    	headers.setContentDispositionFormData("attachment", downloadFielName);// 文件的属性，也就是文件叫什么吧
+    	headers.setContentDispositionFormData("attachment", downloadFielName);// 文件的属性：文件名
     	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);// 内容是字节流
-    	return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.OK);//开始下载
+    	return new ResponseEntity<byte[]>(res, headers, HttpStatus.CREATED);
     }
     
 //    @RequestMapping("/downloadFile")

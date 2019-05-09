@@ -37,8 +37,8 @@ public class ReviseInfoController {
 		ResiveInfoResponse resp = new ResiveInfoResponse();
 		boolean flag = true;
 		
-//		String path = "E:/Codes/vue/harvestweb/static/images/avatar/";
-		String path = "/var/www/html/lab/download/sculpture";
+		String path = "E:/Codes/vue/harvestweb/static/images/avatar";
+//		String path = "/var/www/html/lab/download/sculptures";
 		String imageUrl = data.getImageUrl();
 		String imagePrefix = "";
 		String image = "";
@@ -52,8 +52,8 @@ public class ReviseInfoController {
 		//’相同就不更新imgurl，不相同则先删除原有图片，再更新imgurl
 		int thesameflag = 0;//0：原先无上传的图片   1：原先图片和此次上传图片是同一张   2：原先图片和此次上传图片不是同一张
 		String imgName = reviseInfoService.getImgUrlService(data.getUserType(), data.getUserId());
-		String imgUrl = path + imgName;
-		if(!imgUrl.equals("")) {
+		String imgUrl = path + File.separator + imgName;
+		if(imgName != null && imgName.length() > 0) {
 			String imageBase64 = ConvertUtil.getImageBase64(imgUrl);
 			if(imageBase64.equals(image)) {
 //				System.out.println("the same");
@@ -75,6 +75,7 @@ public class ReviseInfoController {
 				flag = false;
 			}
 		}else { //’图片更新
+			System.out.println("update:");
 		    try {
 				if("data:image/jpeg;".equalsIgnoreCase(imagePrefix)){  //data:image/jpeg;base64,base64编码的jpeg图片数据
 					suffix = ".jpg";
@@ -90,6 +91,7 @@ public class ReviseInfoController {
 						File file = new File(imgUrl);
 						file.delete();
 					}
+					System.out.println(flag);
 					if(flag) {
 						resp.setImgName(newImageName);
 						if(data.getUserType() == 1) {
