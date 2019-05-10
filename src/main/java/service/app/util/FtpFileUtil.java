@@ -4,21 +4,26 @@
  * Created in 2019/04/25
  */
 package service.app.util;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPReply;
-
-import service.app.domain.FtpFileModel;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.SocketException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.util.Assert;
+
+import service.app.domain.FtpFileModel;
 
 
 public class FtpFileUtil {
@@ -210,9 +215,6 @@ public class FtpFileUtil {
  			//下载指定文件
  			ftp.enterLocalPassiveMode();
 			ftp.setRemoteVerificationEnabled(false);
-			
-//			String[] a = ftp.listNames();
-//			System.err.println(a[0]);// 查看有哪些文件夹 以确定切换的ftp路径正确
  
 			FTPFile[] ftpFiles = ftp.listFiles();
 			for (FTPFile file : ftpFiles) {
@@ -335,5 +337,42 @@ public class FtpFileUtil {
             }
         }
 	}
+	
+	public static boolean downloadFile2(String username, String filename, String localpath){
+ 		Boolean flag = false;
+ 		String perFilePath = FTP_FILEPATH + "/" + username;
+ 		FTPClient ftp =null;
+ 		try {
+ 			ftp = ConnectFTP();
+ 			if(ftp == null) {
+ 				return flag;
+ 			}
+ 			ftp.changeWorkingDirectory(perFilePath);
+ 			ftp.enterLocalPassiveMode();
+			ftp.setRemoteVerificationEnabled(false);
+		
+ 
+			Path p = Paths.get(localpath + "/" + filename);
+			try(InputStream is =ftp.retrieveFileStream(filename)){
+				Assert.notNull(is, "no such file:"+filename);
+			
+				Files.deleteIfExists(p);
+				Files.createFile(p);
+				Files.copy(is, p, StandardCopyOption.REPLACE_EXISTING);
+				ftp.completePendingCommand();
+			}
+			
+ 			ftp.logout();
+ 			flag = true;
+ 		} catch (Exception e) {
+ 			e.printStackTrace();
+ 			flag = false;
+ 		} finally {
+ 			closeFTPClient(ftp);
+ 		}
+ 		return flag;
+ 	}
+
+
 
 }

@@ -8,7 +8,7 @@ package service.app.tramodel;
 public class ReviseInfoRequest extends BaseRequest implements Cloneable{
 
 	protected String imageUrl;
-	protected String fileName;
+	protected String filename;
 	protected String link;
 	protected String tel;
 	protected String email;
@@ -24,12 +24,12 @@ public class ReviseInfoRequest extends BaseRequest implements Cloneable{
 		this.imageUrl = imageUrl;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getFilename() {
+		return filename;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	public String getLink() {
@@ -78,5 +78,11 @@ public class ReviseInfoRequest extends BaseRequest implements Cloneable{
 
 	public void setCheckPass(String checkPass) {
 		this.checkPass = checkPass;
+	}
+
+	@Override
+	public String toString() {
+		return "ReviseInfoRequest [imageUrl=" + imageUrl + ", filename=" + filename + ", link=" + link + ", tel=" + tel
+				+ ", email=" + email + ", direction=" + direction + ", pass=" + pass + ", checkPass=" + checkPass + "]";
 	}
 }

@@ -197,7 +197,8 @@ public class GraduationController {
 //    	File file = new File("F:" + File.separator + data.getFilename());// 你放的文件路径 
     	
     	String sufferpath = "/var/www/html/lab/download/suffer";
-    	FtpFileUtil.downloadFile(data.getUsername(), data.getFilename(), sufferpath);
+//    	String sufferpath = "F:";
+    	FtpFileUtil.downloadFile2(data.getUsername(), data.getFilename(), sufferpath);
     	
     	String tmpPathStr = sufferpath + File.separator + data.getFilename();
     	InputStream inputStream = Files.newInputStream(Paths.get(tmpPathStr), StandardOpenOption.READ);
@@ -206,16 +207,6 @@ public class GraduationController {
 //    	InputStream inputStream = FtpFileUtil.getFtpFile(data.getUsername(), data.getFilename());
     	
 //    	InputStream inputStream = new FileInputStream(new File("F:" + File.separator + "zhangjilin.jpg"));
-    	
-//    	OutputStream outputStream = new FileOutputStream(file);
-//    	byte[] arr = new byte[1000]; //该数组用来存入从输入文件中读取到的数据
-//    	int len; //变量len用来存储每次读取数据后的返回值
-//    	while( ( len=inputStream.read(arr) ) != -1 ) {
-//    		outputStream.write(arr, 0, len);
-//    	}//while循环：每次从输入文件读取数据后，都写入到输出文件中
-//    	inputStream.close();
-//    	outputStream.close();
-		
     	byte[] res = StreamUtils.copyToByteArray(inputStream);
     	
     	HttpHeaders headers = new HttpHeaders();// 设置一个head
@@ -224,6 +215,8 @@ public class GraduationController {
     	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);// 内容是字节流
     	return new ResponseEntity<byte[]>(res, headers, HttpStatus.CREATED);
     }
+    
+    
     
 //    @RequestMapping("/downloadFile")
 //    public BaseResponse downloadFileController(HttpServletResponse response, GraduationMsgRequest data) {
