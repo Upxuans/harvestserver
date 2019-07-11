@@ -57,13 +57,16 @@ public class HandleHarService {
 			for(int i=0; i<authors.size(); i++) {
 				int load=0, firstAuthor=0, belong=0;
 				AuthorsModel model = authors.get(i);
+//				System.out.println("---" + i + "---------------------------------------");
 				if(model.getNature1()) firstAuthor = 1; //是否是第一作者
 				if(model.getDegree() == 1) {//作者身份是教师
 					Integer authorId = harhandleDao.selectTeacherByNameDao(model.getName());//寻找teacher表中是否有该名，有则返回其id否则为null
 					if(authorId != null) {//找到user
+//						System.out.println("----- N1 -----");
 						if(userType == 1 && authorId == userId) load = 1;//自己录入的文章是要显示的(身份和id都要对应)
 						harhandleDao.insertTach(authorId, harType, harId, firstAuthor, load, source);
 					}else {//没找到user，先插入user并获userid再插入。
+//						System.out.println("----- N2 -----");
 						harhandleDao.insertTeacher(model.getName());
 						authorId = harhandleDao.getTeacherInsertId();
 						harhandleDao.insertTach(authorId, harType, harId, firstAuthor, 0, source);
@@ -72,10 +75,13 @@ public class HandleHarService {
 					if(model.getNature2()) belong = 1;//对于学生来说是否是毕业条件归属人
 					Integer authorId = harhandleDao.selectStudentByNameDao(model.getName());
 					if(authorId != null) {
+//						System.out.println("----- N3 -----");
 						harhandleDao.insertSach(authorId, harType, harId, firstAuthor, belong, 0, source);//学生刚录入的时候是没有加载0的，待审核1的。
 					}else {
-						harhandleDao.insertStudent(model.getName());
+//						System.out.println("----- N4 -----");
+						harhandleDao.insertStudent(model.getName(), 1, 1, 1);
 						authorId = harhandleDao.getStudentInsertId();
+						System.out.println(authorId);
 						harhandleDao.insertSach(authorId, harType, harId, firstAuthor, belong, 0, source);
 					}
 				}else if(model.getDegree() == 3) {//作者身份是others
@@ -92,7 +98,7 @@ public class HandleHarService {
 	//更新的时候先删除再插入好了
 	public Boolean updateCorrelation(int userType, int userId, List<AuthorsModel> authorsModel, int harType, int harId, int source) {
 
-		System.out.println(userType + "," + userId + "," + harType + "," + harId + "," + source);
+//		System.out.println(userType + "," + userId + "," + harType + "," + harId + "," + source);
 
 		Boolean flag = true;
 		int i, j;
@@ -153,7 +159,7 @@ public class HandleHarService {
 						}
 					}else {
 						nullId = true;
-						harhandleDao.insertStudent(model.getName());
+						harhandleDao.insertStudent(model.getName(), 1, 1, 1);
 						authorId = harhandleDao.getStudentInsertId();
 					}
 					if(!findIt || nullId) //遍历了一遍却没有找到，说明是新增的作者，需要插入*||*在user表中没找到user就新建一个，并获得id,且肯定是新user需要插入*********************insertSach******/
@@ -196,7 +202,7 @@ public class HandleHarService {
 //			insertCorrelation(handleType, userType, userId, authors, harType, harId, source);
 			
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			flag = false;
 		}
 		return flag;

@@ -116,6 +116,7 @@ public class ManageUserConroller {
 	public BaseResponse handleStudentController(@RequestBody ManageUserRequest data) {
 		BaseResponse resp = new BaseResponse();
 		int flag = 0;
+//		System.out.println(data.getHandleType() + ", " + data.getStudentModel());
 		if(data.getHandleType() == 0) {//add
 			Integer id = manageUserService.getStudentUsernameService(data.getStudentModel().getUsername());
 			if(id!=null) flag = 2;//用户名重复
@@ -124,6 +125,7 @@ public class ManageUserConroller {
 			}
 		}else {//update
 			flag = manageUserService.handleStudentService(data.getHandleType(), data.getStudentModel());
+//			System.out.println(flag);
 		}
 		
 		if(flag==0)resp.setErrCode(ErrCode.SETTING_OK); 

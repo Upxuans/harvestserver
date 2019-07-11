@@ -41,12 +41,18 @@ public class ManageUserService {
 		List<StudentModel> studentModels = manageUserDao.getStudentDao();
 		for( int i=0; i<studentModels.size(); i++) {
 			StudentModel model = studentModels.get(i);
-			model.setFirst(harvestUtil.getHarReviseName(Integer.valueOf(model.getFirst())));
-			model.setSecond(harvestUtil.getHarReviseName(Integer.valueOf(model.getSecond())));
-			if(Integer.parseInt(model.getDegree()) == 0)
-				model.setDegree("学硕");
-	    	else
-	    		model.setDegree("专硕");
+			if(model.getFirst() != null) {
+				model.setFirst(harvestUtil.getHarReviseName(Integer.valueOf(model.getFirst())));
+			}
+			if(model.getSecond() != null) {
+				model.setSecond(harvestUtil.getHarReviseName(Integer.valueOf(model.getSecond())));
+			}
+			if(model.getDegree()!= null) {
+				if(Integer.parseInt(model.getDegree()) == 0)
+					model.setDegree("学硕");
+				else
+					model.setDegree("专硕");
+			}
 		}
 		return studentModels;
 	}
@@ -109,6 +115,7 @@ public class ManageUserService {
 						data.setPassword(defaultPassword);//默认密码
 						manageUserDao.addStudentDao(data.getUsername(), data.getPassword(), data.getName(), Integer.valueOf(data.getDegree()), data.getTeam(), firstId, secondId, data.getTel(), data.getEmail(), data.getDirection(), true, true, true);
 					}else {
+//						System.out.println(data.toString());
 						manageUserDao.updateStudentDao(data.getId(), data.getName(), Integer.valueOf(data.getDegree()), data.getTeam(), firstId, secondId, data.getTel(), data.getEmail(), data.getDirection());
 					}
 				}

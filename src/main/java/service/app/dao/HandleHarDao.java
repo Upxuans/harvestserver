@@ -72,8 +72,8 @@ public interface HandleHarDao {
 	@Insert("INSERT INTO teacher (name) VALUE (#{name})")
 	public void insertTeacher(@Param(value = "name") String name);
 
-	@Insert("INSERT INTO student (name) VALUE (#{name})")
-	public void insertStudent(@Param(value = "name") String name);
+	@Insert("INSERT INTO student (name, devices, keyss, works) VALUE (#{name}, #{devices}, #{keyss}, #{works})")
+	public void insertStudent(@Param(value = "name") String name, @Param(value = "devices") int devices, @Param(value = "keyss") int keyss, @Param(value = "works") int works);
 
 	@Insert("INSERT INTO others "
 			+ "(others_name, others_harType, others_harId, others_firstAuthor, others_source)"

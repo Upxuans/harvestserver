@@ -21,11 +21,12 @@ import java.util.List;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import service.app.domain.FtpFileModel;
+import service.app.domain.FileModel;
 
-
+@Component
 public class FtpFileUtil {
 	
 	//ftp服务器ip地址
@@ -102,8 +103,8 @@ public class FtpFileUtil {
 	 * @param username 从个人文件夹寻找
 	 * @return List<String> 文件列表
 	 */
-    public static FtpFileModel getFileList(String username){
-    	FtpFileModel model = new FtpFileModel(); 
+    public static FileModel getFileList(String username){
+    	FileModel model = new FileModel(); 
     	List<String> fileList = new ArrayList<String>();
     	
         String perFilePath = FTP_FILEPATH + "/" + username;

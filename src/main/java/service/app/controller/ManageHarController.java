@@ -51,7 +51,7 @@ public class ManageHarController {
 			resp.setSoftwareModels(auditService.arrangeSoftwareService(gal, harvestUtil.setSoftwareDataAuthors(manageHarService.getAllSoftwareService())));
 			resp.setAffairsModels(auditService.arrangeAffairsService(gal, harvestUtil.setAffairsDataAuthors(manageHarService.getAllAffairsService())));
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			flag = false;
 		}
 		
@@ -76,7 +76,7 @@ public class ManageHarController {
 			resp.setSoftwareModels(auditService.arrangeSoftwareService(gal, harvestUtil.setSoftwareDataAuthors(manageHarService.getAllSoftwareCopyService())));
 			resp.setAffairsModels(auditService.arrangeAffairsService(gal, harvestUtil.setAffairsDataAuthors(manageHarService.getAllAffairsCopyService())));
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			flag = false;
 		}
 		

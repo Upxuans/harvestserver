@@ -18,6 +18,16 @@ public class JpaperModel extends CopyModel {
 	private String jpaperDoi;
 	private String jpaperAuthors = "";
 	
+	@Override
+	public String toString() {
+		return "JpaperModel [jpaperId=" + jpaperId + ", jpaperType=" + jpaperType + ", jpaperType1=" + jpaperType1
+				+ ", jpaperType2=" + jpaperType2 + ", jpaperType3=" + jpaperType3 + ", jpaperTitle=" + jpaperTitle
+				+ ", jpaperPaperName=" + jpaperPaperName + ", jpaperStatus=" + jpaperStatus + ", jpaperPublishDate="
+				+ jpaperPublishDate + ", jpaperReel=" + jpaperReel + ", jpaperIssue=" + jpaperIssue + ", jpaperPage1="
+				+ jpaperPage1 + ", jpaperPage2=" + jpaperPage2 + ", jpaperDoi=" + jpaperDoi + ", jpaperAuthors="
+				+ jpaperAuthors + "]";
+	}
+
 	public Integer getJpaperId() {
 		return jpaperId;
 	}

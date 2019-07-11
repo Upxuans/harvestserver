@@ -68,4 +68,12 @@ public class GraduationResponse extends BaseResponse {
 	public void setWorkDescribe(String workDescribe) {
 		this.workDescribe = workDescribe;
 	}
+
+	@Override
+	public String toString() {
+		return "GraduationResponse [fileList=" + fileList + ", folderSize=" + folderSize + ", devices=" + devices
+				+ ", deviceDescribe=" + deviceDescribe + ", keyss=" + keyss + ", works=" + works + ", workDescribe="
+				+ workDescribe + "]";
+	}
+	
 }

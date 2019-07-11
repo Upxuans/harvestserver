@@ -36,6 +36,13 @@ public class PatentService {
 	public int insertPatentToStockService(int userType, int userId, PatentModel data) {
 		
 		int d1 = 0, d2 = 0, id = 0;
+		String effectDate1 = "1970-01-02";
+		String effectDate2 = "1970-01-02";
+		if(!data.getPatentEffectDate1().equals("") && !data.getPatentEffectDate2().equals("")) {
+			effectDate1 = data.getPatentEffectDate1();
+			effectDate2 = data.getPatentEffectDate2();
+		}
+		
 		if(data.getPatentType().equals("发明专利"))
 			d1 = 1;
 		else if(data.getPatentType().equals("实用新型"))
@@ -57,8 +64,8 @@ public class PatentService {
 				d1,
 				d2,
 				java.sql.Date.valueOf(data.getPatentApplyDate()), 
-				java.sql.Date.valueOf(data.getPatentEffectDate1()), 
-				java.sql.Date.valueOf(data.getPatentEffectDate2()), 
+				java.sql.Date.valueOf(effectDate1), 
+				java.sql.Date.valueOf(effectDate2), 
 				data.getPatentBelong()
 			);
 			id = patentDao.getPatentInsertNoteId();
@@ -71,8 +78,8 @@ public class PatentService {
 				d1,
 				d2,
 				java.sql.Date.valueOf(data.getPatentApplyDate()), 
-				java.sql.Date.valueOf(data.getPatentEffectDate1()), 
-				java.sql.Date.valueOf(data.getPatentEffectDate2()), 
+				java.sql.Date.valueOf(effectDate1), 
+				java.sql.Date.valueOf(effectDate2), 
 				data.getPatentBelong(),
 				1,
 				userId
@@ -86,6 +93,12 @@ public class PatentService {
 		
 		Boolean flag = true;
 		int d1 = 0, d2 = 0;
+		String effectDate1 = "1970-01-02";
+		String effectDate2 = "1970-01-02";
+		if(!data.getPatentEffectDate1().equals("")) {
+			effectDate1 = data.getPatentEffectDate1();
+			effectDate2 = data.getPatentEffectDate2();
+		}
 		
 		if(data.getPatentType().equals("发明专利"))
 			d1 = 1;
@@ -110,8 +123,8 @@ public class PatentService {
 					d1,
 					d2,
 					java.sql.Date.valueOf(data.getPatentApplyDate()), 
-					java.sql.Date.valueOf(data.getPatentEffectDate1()), 
-					java.sql.Date.valueOf(data.getPatentEffectDate2()), 
+					java.sql.Date.valueOf(effectDate1), 
+					java.sql.Date.valueOf(effectDate2), 
 					data.getPatentBelong()
 				);
 			}else if(source == 1) {
@@ -124,8 +137,8 @@ public class PatentService {
 					d1,
 					d2,
 					java.sql.Date.valueOf(data.getPatentApplyDate()), 
-					java.sql.Date.valueOf(data.getPatentEffectDate1()), 
-					java.sql.Date.valueOf(data.getPatentEffectDate2()), 
+					java.sql.Date.valueOf(effectDate1), 
+					java.sql.Date.valueOf(effectDate2), 
 					data.getPatentBelong()
 				);
 			}

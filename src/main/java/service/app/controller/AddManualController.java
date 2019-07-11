@@ -57,6 +57,7 @@ public class AddManualController {
 //		System.out.println("User:" + data.getUserType() + "," + data.getUserId());
 //		System.out.println("Harvest:" + data.getJpaperModel().getJpaperPaperName() + "," + data.getJpaperModel().getJpaperPublishDate());
 //		System.out.println("Authors:" + data.getAuthorsModels().get(0).getName() + "," + data.getAuthorsModels().get(0).getDegree() + "," + data.getAuthorsModels().get(0).getNature1() + "," + data.getAuthorsModels().get(0).getNature2());
+//		System.out.println(data.getAuthorsModels().size());
 		BaseResponse baseResp = new BaseResponse();
 		
 		Boolean flag = false;
@@ -71,7 +72,6 @@ public class AddManualController {
 			flag = jpaperService.updateJpaperService(data.getJpaperModel(), data.getHarId(), data.getSource());//更新后获得该记录的id
 			if(flag) flag = handleharService.updateCorrelation(data.getUserType(), data.getUserId(), data.getAuthorsModels(), 1, data.getHarId(), data.getSource());//根据作者更新关系
 		}
-		
 		if (flag) baseResp.setErrCode(ErrCode.SETTING_OK);
 		else baseResp.setErrCode(ErrCode.SETTING_ERR);
 		return baseResp;
@@ -91,7 +91,6 @@ public class AddManualController {
 		}else {//update
 			if(data.getHandleType() == 2) mpaperService.updateMpaperCopyReviewService(data.getHarId(), 1, -1);
 			flag = mpaperService.updateMpaperService(data.getMpaperModel(), data.getHarId(), data.getSource());//插入后获得该记录的id
-			System.out.println(flag);
 			if(flag) flag = handleharService.updateCorrelation(data.getUserType(), data.getUserId(), data.getAuthorsModels(), 2, data.getHarId(), data.getSource());//根据作者更新关系
 		}
 		

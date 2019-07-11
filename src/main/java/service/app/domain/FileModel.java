@@ -2,7 +2,7 @@ package service.app.domain;
 
 import java.util.List;
 
-public class FtpFileModel {
+public class FileModel {
 
 	private List<String> fileList;
 	private int folderSize;
@@ -22,4 +22,10 @@ public class FtpFileModel {
 	public void setFolderSize(int folderSize) {
 		this.folderSize = folderSize;
 	}
+
+	@Override
+	public String toString() {
+		return "FileModel [fileList=" + fileList + ", folderSize=" + folderSize + "]";
+	}
+	
 }

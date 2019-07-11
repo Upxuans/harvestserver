@@ -5,31 +5,31 @@
  */
 package service.app.tramodel;
 
-import java.util.Arrays;
-
 import org.springframework.web.multipart.MultipartFile;
 
-public class GraduationRequest extends GraduationMsgRequest implements Cloneable {
+public class GraduationRequest implements Cloneable {
 
-	private MultipartFile[] files;
+	private String username;
+	private MultipartFile file;
 
-	public MultipartFile[] getFiles() {
-		return files;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setFiles(MultipartFile[] files) {
-		this.files = files;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	@Override
 	public String toString() {
-		return "GraduationRequest [files=" + Arrays.toString(files) + ", getFiles()=" + Arrays.toString(getFiles())
-				+ ", getUsername()=" + getUsername() + ", getFilename()=" + getFilename() + ", getDevices()="
-				+ getDevices() + ", getDeviceDescribe()=" + getDeviceDescribe() + ", getKeyss()=" + getKeyss()
-				+ ", getWorks()=" + getWorks() + ", getWorkDescribe()=" + getWorkDescribe() + ", toString()="
-				+ super.toString() + ", getUserType()=" + getUserType() + ", getUserId()=" + getUserId()
-				+ ", getHarType()=" + getHarType() + ", getHarId()=" + getHarId() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + "]";
+		return "GraduationRequest [username=" + username + ", file=" + file + "]";
 	}
-
 }

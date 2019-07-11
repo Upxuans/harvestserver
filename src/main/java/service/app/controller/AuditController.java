@@ -76,6 +76,7 @@ public class AuditController {
 	@ResponseBody
 	public HarvestResponse myAuditController(HttpServletResponse response, BaseRequest data) {
 		
+		System.out.println(data.getUserId());
 		HarvestResponse resp = new HarvestResponse();
 		int id = data.getUserId();
 		boolean gal = true;

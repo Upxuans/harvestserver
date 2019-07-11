@@ -29,10 +29,13 @@ public class JpaperService {
 	}
 	
 	public List<JpaperModel> getJpaperDataFromStudentService(int userid, int load) {
+//		System.out.println(userid + ", " + load );
 		List<JpaperModel> jpaperModel = jpaperDao.getJpaperDataFromStudentDao(userid, load);
 		List<JpaperModel> copyModel = jpaperDao.getJpaperCopyFromStudentDao(userid, load);
 		if(copyModel != null) 
 			jpaperModel.addAll(copyModel);
+		
+//		System.out.println(jpaperModel.size());
 		return jpaperModel;
 	}
 	
@@ -40,10 +43,14 @@ public class JpaperService {
 	public int insertJpaperToStockService(int userType, int userId, JpaperModel data) {
 		
 		int d2 = 0, id = 0;
+		String publishDate = "1970-01-02";
 		String d1 = data.getJpaperStatus();
 		
 		if(d1.equals("已发表")) d2 = 1;
 		else if(d1.equals("已接收")) d2 = 2; 
+		
+		if(!data.getJpaperPublishDate().equals("")) publishDate = data.getJpaperPublishDate();
+//		System.out.println("JpaperModel: " + data.toString());
 		
 		if(userType == 1 || userType == 0) {//*重构的时候可以合并冗余，只是表名不同，可以设置表名为参数*
 			jpaperDao.insertJpaperToMyStockDao(
@@ -53,7 +60,7 @@ public class JpaperService {
 				data.getJpaperTitle(), 
 				data.getJpaperPaperName(), 
 				d2, 
-				java.sql.Date.valueOf(data.getJpaperPublishDate()), 
+				java.sql.Date.valueOf(publishDate), 
 				data.getJpaperReel(), 
 				data.getJpaperIssue(), 
 				data.getJpaperPage1(), 
@@ -69,7 +76,7 @@ public class JpaperService {
 				data.getJpaperTitle(), 
 				data.getJpaperPaperName(), 
 				d2, 
-				java.sql.Date.valueOf(data.getJpaperPublishDate()), 
+				java.sql.Date.valueOf(publishDate), 
 				data.getJpaperReel(), 
 				data.getJpaperIssue(), 
 				data.getJpaperPage1(), 
@@ -87,10 +94,13 @@ public class JpaperService {
 
 		Boolean flag = true;
 		int d2 = 0;
+		String publishDate = "1970-01-02";
 		String d1 = data.getJpaperStatus();
 		
 		if(d1.equals("已发表")) d2 = 1;
 		else if(d1.equals("已接收")) d2 = 2; 
+		if(!data.getJpaperPublishDate().equals("")) publishDate = data.getJpaperPublishDate();
+		
 		try {
 			if(source == 0) {//*重构的时候可以合并冗余，只是表名不同，可以设置表名为参数*
 				jpaperDao.updateJpaperDao(
@@ -101,7 +111,7 @@ public class JpaperService {
 					data.getJpaperTitle(), 
 					data.getJpaperPaperName(), 
 					d2, 
-					java.sql.Date.valueOf(data.getJpaperPublishDate()),
+					java.sql.Date.valueOf(publishDate),
 					data.getJpaperReel(), 
 					data.getJpaperIssue(), 
 					data.getJpaperPage1(), 
@@ -117,7 +127,7 @@ public class JpaperService {
 					data.getJpaperTitle(), 
 					data.getJpaperPaperName(), 
 					d2, 
-					java.sql.Date.valueOf(data.getJpaperPublishDate()), 
+					java.sql.Date.valueOf(publishDate), 
 					data.getJpaperReel(), 
 					data.getJpaperIssue(), 
 					data.getJpaperPage1(), 

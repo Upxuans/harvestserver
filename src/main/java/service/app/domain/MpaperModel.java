@@ -17,6 +17,16 @@ public class MpaperModel extends CopyModel {
 	private String mpaperMeetPlace;
 	private String mpaperAuthors = "";
 	
+	@Override
+	public String toString() {
+		return "MpaperModel [mpaperId=" + mpaperId + ", mpaperType=" + mpaperType + ", mpaperType1=" + mpaperType1
+				+ ", mpaperType2=" + mpaperType2 + ", mpaperType3=" + mpaperType3 + ", mpaperTitle=" + mpaperTitle
+				+ ", mpaperPublishDate=" + mpaperPublishDate + ", mpaperPage1=" + mpaperPage1 + ", mpaperPage2="
+				+ mpaperPage2 + ", mpaperMeetName=" + mpaperMeetName + ", mpaperMeetDate1=" + mpaperMeetDate1
+				+ ", mpaperMeetDate2=" + mpaperMeetDate2 + ", mpaperMeetPlace=" + mpaperMeetPlace + ", mpaperAuthors="
+				+ mpaperAuthors + "]";
+	}
+
 	public Integer getMpaperId() {
 		return mpaperId;
 	}

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +26,6 @@ import service.app.tramodel.ReviseInfoRequest;
 import service.app.tramodel.response.BaseResponse;
 import service.app.tramodel.response.ErrCode;
 import service.app.tramodel.response.ResiveInfoResponse;
-import service.app.util.ConvertUtil;
 
 @RestController
 public class ReviseInfoController {
@@ -40,11 +38,9 @@ public class ReviseInfoController {
 
 	@RequestMapping("/uploadSculpture")
 	public ResiveInfoResponse uploadSculptureController(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
-		System.out.println("uploadSculpture：");
+//		System.out.println("uploadSculpture：");
 		ResiveInfoResponse resp = new ResiveInfoResponse();
 		boolean flag = true;
-//		String bufferpath = "E:/Codes/vue/harvestweb/static/images/avatar";
-//		String path = "/var/www/html/lab/download/sculptures";
 		try {
 			String filename = file.getOriginalFilename();
 			InputStream ins = file.getInputStream(); 
@@ -62,7 +58,7 @@ public class ReviseInfoController {
 	
 	@RequestMapping("/reviseBaseInfo")
 	public BaseResponse reviseBaseInfoController(@RequestBody ReviseInfoRequest data) throws IOException {
-		System.out.println(data.toString());
+//		System.out.println(data.toString());
 		BaseResponse resp = new BaseResponse();
 		Boolean flag = true;
 		try {

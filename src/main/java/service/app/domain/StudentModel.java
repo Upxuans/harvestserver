@@ -162,4 +162,14 @@ public class StudentModel {
 	public void setKeyss(Boolean keyss) {
 		this.keyss = keyss;
 	}
+
+	@Override
+	public String toString() {
+		return "StudentModel [id=" + id + ", username=" + username + ", password=" + password + ", imgurl=" + imgurl
+				+ ", name=" + name + ", first=" + first + ", second=" + second + ", tel=" + tel + ", email=" + email
+				+ ", direction=" + direction + ", degree=" + degree + ", team=" + team + ", workDescribe="
+				+ workDescribe + ", works=" + works + ", devices=" + devices + ", deviceDescribe=" + deviceDescribe
+				+ ", keyss=" + keyss + "]";
+	}
+	
 }
